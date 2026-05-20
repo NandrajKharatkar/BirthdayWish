@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Surprise | For You</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&family=Playfair+Display:ital,wght@0,700;1,700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div id="app">
+        <div id="bunting-container" class="bunting-container"></div>
+        <!-- Screen 1: Countdown -->
+        <section id="screen-countdown" class="screen active">
+            <div class="countdown-circle">
+                <span id="countdown-number">3</span>
+            </div>
+            <p class="fade-in-text">Creating your special moment</p>
+        </section>
+
+        <!-- Screen 2: Introduction -->
+        <section id="screen-intro" class="screen">
+            <div class="content-wrapper">
+                <div class="kitten-container">
+                    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExeXZwNjc0aTh0MzhtbG51c2cwYjY2eG5sNjJxb3Vwcnc3NWR1OXdjZSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/ewgG1X6DRvVj3r2hrZ/giphy.gif"
+                        alt="Cute Kitten" id="kitten-gif">
+                </div>
+                <div class="text-content">
+                    <p class="highlight-text">A cutie piee was born on 1st may, 21 years ago!</p>
+                    <p class="sub-text">Yes, it's you! A little surprise awaits.....</p>
+                </div>
+                <button id="start-surprise-btn" class="btn-pink">
+                    <i class="fas fa-gift"></i> Start the surprise
+                </button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Cake & Decoration -->
+        <section id="screen-cake" class="screen">
+            <div class="content-wrapper">
+                <div class="cake-container">
+                    <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXNhZGhvOXlnbXd6ZDBpNmVsaXY4N2cxMzc5Zm85N3RhaHdyYzdhMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/roaDAsfvtsSl4aAj76/giphy.gif"
+                        alt="Birthday Cake" id="birthday-cake" class="big-cake">
+                    <div id="lit-candle-img" class="lit-image hidden">
+                        <img src="https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExOGZnZnpxZDZkbmsxNjgydHYwemgxNDR6cTA5ZzQ1bHM5YXE5MTI4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QqYLdTcHjrEu3I43Qt/giphy.gif"
+                            alt="">
+                    </div>
+                </div>
+                <div class="cake-controls">
+                    <button id="decorate-btn" class="btn-pink">Decorate</button>
+                    <button id="light-candle-btn" class="btn-pink hidden">Light the candle</button>
+                </div>
+                <div id="birthday-msg" class="hidden message-centered">
+                    <h1 class="glow-text">Happy Birthday Kashish!</h1>
+                    <button id="pop-balloons-btn" class="btn-pink">Pop the balloons</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: Balloon Pop -->
+        <section id="screen-balloons" class="screen">
+            <div id="balloon-container">
+                <!-- Balloons will be injected by JS -->
+            </div>
+            <button id="next-from-balloons" class="btn-pink hidden">Next</button>
+        </section>
+
+        <!-- Screen 5: Sweet Moments -->
+        <section id="screen-moments" class="screen">
+            <div class="content-wrapper">
+                <h2 class="title-text">Some Sweet Moments</h2>
+                <p class="instruction-text">Click on image</p>
+                <div class="gallery-container" id="gallery">
+                    <div class="gallery-item active"><img
+                            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExZHBydzczc2lpZWo2azB2ZGRlbGFsNGJ6bGV6bG1wcHFzb2MwYndsMCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/TtwvIYWpiaQ6Eve1Yh/giphy.gif"
+                            alt="Moment 1"></div>
+                    <div class="gallery-item"><img
+                            src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExazBya3E1ZjFrOG43djd0a3c0Z2xhODc4Z2NzYXNobXJkZmUxNjVmaiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wLyoZPXBRSOFAXYhHd/giphy.gif"
+                            alt="Moment 2"></div>
+                    <div class="gallery-item"><img
+                            src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmc4OTRpa3NjMjI0cTg0a3U0d3FhYTdyM24wYzk2MW45YTMwcWdhaSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/n0OktAuKVEHeFzSfO2/giphy.gif"
+                            alt="Moment 3"></div>
+                    <div class="gallery-item"><img
+                            src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMDg3bGJwZ2N4cGpmMmlnZ3hsZWpuMGV5djg4N2Fib240d3k0NG15NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/m0OFkqdFocfTCfv7Qw/giphy.gif"
+                            alt="Moment 4"></div>
+                </div>
+                <button id="one-last-thing-btn" class="btn-pink">One last thing</button>
+            </div>
+        </section>
+
+        <!-- Screen 6: Final Gift -->
+        <section id="screen-final" class="screen">
+            <div class="content-wrapper">
+                <h2 class="title-text">One last thing</h2>
+                <div class="gift-box-container">
+                    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExY2kydmIxcW03bWVwYzVsNG1zMnhtbDFuYzNpMGkwcXJ0Nnp3ZHc4OCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/tBQrJU8kVNrEZXNwEn/giphy.gif"
+                        alt="Gift Box" id="gift-box" class="tappable">
+                    <p class="tap-text">Tap the gift</p>
+                </div>
+                <div id="final-note" class="hidden">
+                    <p class="note-text">“I think you might have liked this, and sorry for being so late. It would’ve
+                        been much better if I had given it to you on your birthday itself, but after I told you about
+                        it, I decided to make it even better and create another one. The last one was simple because I
+                        didn’t want to overdo it and accidentally ruin your mood because of me. But after I told you
+                        about this,, I made this one. And one last time — Happy Birthday, Kashish. Hope you loved
+                        this..................</p>
+                    <button id="reply-btn" class="btn-pink">Reply</button>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

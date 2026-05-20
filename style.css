@@ -1,0 +1,594 @@
+:root {
+    --primary-pink: #b7134c;
+    --secondary-pink: #ff00aa;
+    --gold: #ffd700;
+    --dark-bg: #0f0c29;
+    --glass-bg: rgba(23, 6, 6, 0.1);
+    --glass-border: rgba(3, 1, 1, 0.2);
+    --text-white: #ffffff;
+    --transition-speed: 0.8s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    background: var(--dark-bg);
+    background: linear-gradient(to bottom, #24243e, #302b63, #0f0c29);
+    height: 100vh;
+    overflow: hidden;
+    color: var(--text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#app {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed) ease, visibility var(--transition-speed);
+    padding: 20px;
+    text-align: center;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Screen 1: Countdown */
+.countdown-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-pink);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 5rem;
+    font-weight: 600;
+    box-shadow: 0 0 30px var(--primary-pink), inset 0 0 20px var(--primary-pink);
+    animation: pulse-glow 1s infinite alternate;
+    margin-bottom: 30px;
+}
+
+@keyframes pulse-glow {
+    from {
+        box-shadow: 0 0 20px var(--primary-pink), inset 0 0 10px var(--primary-pink);
+        transform: scale(1);
+    }
+
+    to {
+        box-shadow: 0 0 50px var(--primary-pink), inset 0 0 30px var(--primary-pink);
+        transform: scale(1.05);
+    }
+}
+
+.fade-in-text {
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 2px;
+    opacity: 0;
+    animation: fadeIn 2s forwards 0.5s;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Common Content Wrapper */
+.content-wrapper {
+    max-width: 500px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* Buttons */
+.btn-pink {
+    background: linear-gradient(45deg, var(--primary-pink), var(--secondary-pink));
+    border: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 116, 164, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-pink:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 116, 164, 0.5);
+}
+
+.btn-pink:active {
+    transform: translateY(0);
+}
+
+/* Introduction Screen */
+.kitten-container img {
+    width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    border: 3px solid var(--glass-border);
+}
+
+.highlight-text {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--secondary-pink);
+}
+
+.sub-text {
+    font-size: 1.1rem;
+    font-weight: 300;
+    opacity: 0.8;
+}
+
+/* Cake Screen */
+.cake-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.big-cake {
+    width: 300px;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.5));
+    transition: transform 0.5s ease;
+}
+
+.lit-image {
+    position: absolute;
+    top: -120px; /* Position it above the cake */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    animation: bounceIn 1s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.lit-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes bounceIn {
+    0% { transform: translateX(-50%) scale(0); opacity: 0; }
+    100% { transform: translateX(-50%) scale(1); opacity: 1; }
+}
+
+.message-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.reveal-zoom {
+    animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.5); opacity: 0.5; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+#app.decorated {
+    background: radial-gradient(circle at center, #020105 0%, #0f0c29 100%);
+}
+
+#app.decorated::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://www.transparenttextures.com/patterns/confetti.png');
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.glow-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    color: var(--gold);
+    text-shadow: 0 0 15px var(--gold);
+    margin-bottom: 20px;
+}
+
+/* Bunting Decoration */
+.bunting-container {
+    position: absolute;
+    top: -100px; /* Hidden initially */
+    left: 0;
+    width: 100%;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 10;
+    transition: top 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#app.decorated .bunting-container {
+    top: 0;
+}
+
+.bunting-string {
+    position: absolute;
+    top: 0;
+    width: 110%;
+    height: 100px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    left: -5%;
+}
+
+.flag {
+    width: 0;
+    height: 0;
+    border-left: 18px solid transparent;
+    border-right: 18px solid transparent;
+    border-top: 30px solid red;
+    position: absolute;
+    transform-origin: top center;
+    filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+    animation: flag-sway 3s infinite ease-in-out;
+}
+
+@keyframes flag-sway {
+    0%, 100% { transform: rotate(-8deg); }
+    50% { transform: rotate(8deg); }
+}
+
+.streamer {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 100vh;
+    background: transparent;
+    border-left: 4px solid var(--secondary-pink);
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+.streamer-left {
+    left: 20px;
+    transform: rotate(5deg);
+}
+
+.streamer-right {
+    right: 20px;
+    transform: rotate(-5deg);
+}
+
+/* Balloon Screen */
+#balloon-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 40px;
+    padding: 20px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+@media (max-width: 500px) {
+    #balloon-container {
+        transform: scale(0.7);
+    }
+}
+
+.balloon-wrapper {
+    position: relative;
+    width: 80px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden-text {
+    position: absolute;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 1;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    pointer-events: none;
+    font-family: 'Playfair Display', serif;
+}
+
+.hidden-text.revealed {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.balloon.stationary {
+    position: absolute;
+    width: 80px;
+    height: 100px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 2;
+    transition: transform 0.2s, opacity 0.2s;
+    animation: gentle-bob 2.5s ease-in-out infinite alternate;
+    box-shadow: inset -10px -10px 20px rgba(0,0,0,0.2), 0 10px 15px rgba(0,0,0,0.3);
+}
+
+.balloon.stationary::before {
+    content: '';
+    position: absolute;
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 10px;
+    background-color: inherit;
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+    z-index: -1;
+}
+
+.balloon.stationary::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform-origin: top center;
+    transform: translateX(-50%) rotate(var(--thread-rot, 0deg));
+    width: 2px;
+    height: var(--thread-len, 40px);
+    background: rgba(255, 255, 255, 0.6);
+    z-index: -2;
+}
+
+.bunch-knot {
+    position: absolute;
+    top: calc(50% + 230px);
+    left: 50%;
+    margin-left: -7.5px;
+    width: 15px;
+    height: 15px;
+    background: var(--gold);
+    border-radius: 50%;
+    z-index: -1;
+    animation: gentle-bob 2.5s ease-in-out infinite alternate;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+    transition: opacity 0.5s;
+}
+
+.bunch-knot::before, .bunch-knot::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 15px;
+    background: var(--gold);
+    border-radius: 10px;
+    z-index: -1;
+}
+
+.bunch-knot::before {
+    left: -12px;
+    transform: translateY(-50%) rotate(-30deg);
+}
+
+.bunch-knot::after {
+    right: -12px;
+    transform: translateY(-50%) rotate(30deg);
+}
+
+@keyframes gentle-bob {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-15px); }
+}
+
+.balloon.stationary.popped {
+    transform: scale(1.5);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Gallery Screen */
+.gallery-container {
+    width: 300px;
+    height: 400px;
+    position: relative;
+    perspective: 1000px;
+}
+
+.gallery-item {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 5px solid white;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: scale(0.8) rotateY(-20deg);
+}
+
+.gallery-item.active {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+    z-index: 2;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.title-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.instruction-text {
+    font-style: italic;
+    opacity: 0.6;
+    margin-bottom: 20px;
+}
+
+/* Final Screen */
+.gift-box-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.tappable {
+    width: 200px;
+    cursor: pointer;
+    transition: transform 0.3s;
+    animation: wobble 2s infinite;
+}
+
+@keyframes wobble {
+
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(-5deg);
+    }
+
+    75% {
+        transform: rotate(5deg);
+    }
+}
+
+.tappable:active {
+    transform: scale(0.9);
+}
+
+.tap-text {
+    font-weight: 600;
+    color: var(--primary-pink);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.note-text {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Final Screen */
+#final-note {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Reaction Camera */
+#reaction-cam-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 120px;
+    height: 160px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    border: 2px solid var(--primary-pink);
+    background: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+#reaction-cam-container.hidden {
+    display: none !important;
+}
+
+#reaction-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scaleX(-1); /* Mirror effect */
+}
+
+.recording-indicator {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    font-size: 0.7rem;
+    padding: 3px 6px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    backdrop-filter: blur(4px);
+}
+
+.red-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff3333;
+    border-radius: 50%;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+/* Utilities */
+.hidden {
+    display: none !important;
+}
